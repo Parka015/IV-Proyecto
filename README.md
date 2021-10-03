@@ -13,7 +13,7 @@ Por medio de estos datos recogidos, poder predecir si una serie, en función de 
 
 ### Documentación
 
-Toda la documentación de este proyecto se puede encontrar en [docs](https://github.com/Parka015/IV-Proyecto/docs)
+Toda la documentación de este proyecto se puede encontrar en [docs](https://github.com/Parka015/IV-Proyecto/tree/Objetivo-1/docs)
 
 
 

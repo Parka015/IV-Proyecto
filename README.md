@@ -1,6 +1,6 @@
 ## IV-Proyecto
 
-Quiero crear una aplicación que resuelva el problema que puedan tener ciertas compañias productoras de series a la hora de saber si le será rentable la producción de una determinada serie. La aplicación tendrá 2 objetivos:
+Quiero crear una aplicación que resuelva el problema que puedan tener ciertas compañias productoras de series a la hora de saber si le será rentable la producción de una determinada serie en base a las características de la misma. La aplicación tendrá 2 objetivos:
 
 ### Objetivo 1
 

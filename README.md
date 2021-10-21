@@ -8,7 +8,7 @@ Recoger las características de una serie y una valoración de parte de cualquie
 
 ### Objetivo 2
 
-Por medio de estos datos recogidos, poder predecir si una serie, en función de sus características, tendrá buena valoración.
+Por medio de estos datos recogidos, poder predecir mediante un modelo de regresión lineal si una serie, en función de sus características, tendrá buena valoración.
 
 
 ### Documentación

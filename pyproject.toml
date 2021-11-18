@@ -17,5 +17,5 @@ requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.taskipy.tasks]
-test = { cmd = "python -m pytest", help = "runs all tests" }
+tests = { cmd = "python -m pytest", help = "runs all tests" }
 

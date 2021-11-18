@@ -1,0 +1,5 @@
+lenguaje: python
+objeto_valor: serieMotion/caracteristicas.py
+automatizar:
+    fichero: pyproject.toml
+    orden: poetry run

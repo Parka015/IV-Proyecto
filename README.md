@@ -16,6 +16,13 @@ Por medio de estos datos recogidos, poder predecir mediante un algoritmo de Mach
 Toda la documentación de este proyecto se puede encontrar en [docs](https://github.com/Parka015/IV-Proyecto/tree/Objetivo-1/docs)
 
 
+### Guía de uso
+
+Para pasar los tests:
+```
+poetry run task tests
+```
+
 
 
 

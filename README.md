@@ -20,7 +20,7 @@ Toda la documentación de este proyecto se puede encontrar en [docs](https://git
 
 Para pasar los tests:
 ```
-poetry run task tests
+invoke check
 ```
 
 

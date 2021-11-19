@@ -18,9 +18,20 @@ Toda la documentación de este proyecto se puede encontrar en [docs](https://git
 
 ### Guía de uso
 
-Para pasar los tests:
+
+Para pasar una comprobación de la sintaxis:
 ```
 invoke check
+```
+
+Para pasar los tests (sin desarrollar aun):
+```
+invoke tests
+```
+
+Para iniciar la aplicación (sin desarrollar aun):
+```
+invoke run
 ```
 
 

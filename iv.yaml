@@ -1,4 +1,5 @@
 lenguaje: python
+entidad: serieMotion/serie.py
 objeto_valor: serieMotion/caracteristicas.py
 automatizar:
     fichero: pyproject.toml

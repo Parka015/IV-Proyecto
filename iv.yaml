@@ -1,6 +1,6 @@
 lenguaje: python
-entidad: serieMotion/serie.py
-objeto_valor: serieMotion/caracteristicas.py
+entidad: source/serie.py
+objeto_valor: source/caracteristicas.py
 automatizar:
     fichero: pyproject.toml
     orden: invoke

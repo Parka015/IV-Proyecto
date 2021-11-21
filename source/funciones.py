@@ -3,7 +3,7 @@
 Funciones Auxiliares
 """
 
-def caracteristicaValida(carac):
+def hacerCaracteristicaValida(carac):
         
         if (carac < 0):
             

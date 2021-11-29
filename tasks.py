@@ -12,13 +12,18 @@ def check(c):
     result = c.run(cmd, hide=False, warn=False)
     if result.ok:
         print("Check realizado exitosamente")
+        
+@task
+def tests(c):  
+    cmd = "python -m pytest"
+    print("Pasando tests...\n\n")
+    result = c.run(cmd, hide=False, warn=False)
+    if result.ok:
+        print("Tests finalizados exitosamente")
+    
 
 # =============================================================================
 # @task
 # def run(c):
-#
-# @task
-# def tests(c):
-#   cmd = "python -m pytest"
 #
 # =============================================================================

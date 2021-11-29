@@ -1,0 +1,6 @@
+lenguaje: python
+entidad: source/serie.py
+objeto_valor: source/caracteristicas.py
+automatizar:
+    fichero: pyproject.toml
+    orden: invoke

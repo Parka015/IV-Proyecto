@@ -24,7 +24,7 @@ Para pasar una comprobación de la sintaxis:
 invoke check
 ```
 
-Para pasar los tests (sin desarrollar aun):
+Para pasar los tests:
 ```
 invoke tests
 ```

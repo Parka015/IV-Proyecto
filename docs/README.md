@@ -1,5 +1,6 @@
 # Documentación
 
+# Objetivo 3
 
 ## Gestor de dependencias y versiones : Poetry
 
@@ -17,7 +18,7 @@ Otras opciones barajadas son **pip**, pero el problema de este es que si el proy
 
 ## Gestor de tareas : Invoke
 
-Es un gestor de tareas bastante conocido de Python y lo usaremos para automatizar tareas que puedan ser tediosas de realizar porque involucren varias ordenes. La otra opción fue taskipy pero hubo problemas durante su implantación e **Invoke** fue la alternativa, en cualquier caso, **Invoke** es bastante completo y facil de usar, por lo que cumple su cometido
+Es un gestor de tareas bastante conocido de Python y lo usaremos para automatizar tareas que puedan ser tediosas de realizar porque involucren varias ordenes. La otra opción fue **taskipy**, un plugin de poetry, que nos da la ventaja de usar el propio pyproject.toml para añadir las tareas que queremos automatizar, pero hubo problemas durante su implantación al proyecto (pedía un paquete que no poseía), e **Invoke** fue la alternativa, en cualquier caso, **Invoke** es bastante completo y facil de usar, por lo que cumple su cometido y no pide la instalación de ningún paquete adicional
 
 * Instalación:
 

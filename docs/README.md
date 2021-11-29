@@ -39,3 +39,7 @@ Para el framework de test en python, he encontrado a **Unittest** y a **Pytest**
 Unittest es el marco de tests establecido en python de forma predeterminada. Para usarlo, creamos clases que se derivan del módulo unittest.TestCase.
 Pytest tiene ricas características incorporadas que requieren menos código en comparación con unittest. En el caso de unittest, tenemos que importar un módulo, crear una clase y luego definir funciones de prueba dentro de la clase. Pero en el caso de pytest, tenemos que definir las funciones y asserts dentro de ellas.
 Por simplicidad he decidido hacer uso de pytest ya que no hay ninguna estructura compleja en el proyecto que requiera hacer uso de una clase de test.
+
+## Justificación de uso de los principios F.I.R.S.T
+
+He desarrollado un test para la regresión lineal, que comprueba que se devuelve un numero entre 0 y 5 tal y como se especifica en el M1, que sigue los principios F.I.R.S.T, porque es un test **rápido**, ya que usamos numpy para agilizar los cálculos y usamos un conjunto de datos muy reducido, **independiente**, porque no depende de ningún otro test, **repetible** porque se puede replicar en cualquier otro ordenador ya que todo lo que se necesita viene en el proyecto. Responde con una assert (o pasa o no pasa) y se ha creado de manera independiente a la implementación de la regresión lineal

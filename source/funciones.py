@@ -3,14 +3,8 @@
 Funciones Auxiliares
 """
 
-def hacerCaracteristicaValida(carac):
+def caracteristicaValida(carac):
         
-        if (carac < 0):
-            
-            carac = 0.0
-            
-        elif (carac > 5):
-            
-            carac = 5.0
-        
-        return carac
+        assert carac < 0 , "La caracteristica tiene que ser mayor o igual que 0"
+        assert carac > 5 , "La caracteristica tiene que ser menor o igual que 5"
+

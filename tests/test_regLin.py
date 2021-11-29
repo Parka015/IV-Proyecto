@@ -1,9 +1,8 @@
-import sys
-sys.path.append("..")
+
 
 import pytest
-import funciones_tests
-from source import funciones
+import tests.funciones_tests
+import source.funciones
 import numpy as np
 
 #Se asegura que la regresion lineal devuelve un valor entre 0 y 5

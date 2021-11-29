@@ -11,14 +11,12 @@ class Caracteristicas:
         caracteristicaValida(accion)    #En caso de no ser válida genera un error
         caracteristicaValida(terror)
         caracteristicaValida(romance)
-        caracteristicaValida(comedia)
         caracteristicaValida(efectos_especiales)
         caracteristicaValida(valoracion)
 
         self.accion = accion
         self.terror = terror
-        self.romance = romance
-        self.comedia = comedia
+        self.romance =romance
         self.efectos_especiales = efectos_especiales
         self.valoracion = valoracion
         
@@ -32,10 +30,7 @@ class Caracteristicas:
         return self.terror 
     
     def getRomance(self):
-        return self.romance
-
-    def getComedia(self):
-        return self.comedia
+        return self.romance 
     
     def getEfectos_especiales(self):
         return self.efectos_especiales
@@ -57,10 +52,6 @@ class Caracteristicas:
     def setRomance(self, romance):
         caracteristicaValida(romance)
         self.romance = romance
-
-    def setComedia(self, comedia):
-        caracteristicaValida(comedia)
-        self.comedia = comedia
     
     def setEfectos_especiales(self, efectos_especiales):
         caracteristicaValida(efectos_especiales)

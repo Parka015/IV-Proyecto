@@ -11,9 +11,7 @@ class Caracteristicas:
         self.accion = caracteristicaValida(accion)
         self.terror = caracteristicaValida(terror)
         self.romance = caracteristicaValida(romance)
-        self.efectos_especiales = caracteristicaValida(efectos_especiales)
-        self.valoracion = caracteristicaValida(valoracion)
-        
+        self.efectos_especiales = caracteristicaValida(efectos_especiales)        
         
     ####  Gets  ####
         
@@ -28,10 +26,7 @@ class Caracteristicas:
     
     def getEfectos_especiales(self):
         return self.efectos_especiales
-    
-    def getValoracion(self):
-        return self.valoracion
-    
+
     
     ####  Sets  ####
     
@@ -46,14 +41,4 @@ class Caracteristicas:
     
     def setEfectos_especiales(self, efectos_especiales):
         self.efectos_especiales = caracteristicaValida(efectos_especiales)
-    
-    def setValoracion(self, valoracion):
-        self.valoracion = caracteristicaValida(valoracion)
-        
 
-                 
-    
-    
-
-        
-    

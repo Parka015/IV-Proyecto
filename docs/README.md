@@ -38,9 +38,9 @@ Visita la wiki del proyecto pulsando [aquí](https://github.com/Parka015/IV-Proy
 ## Framework de tests : pytest
 
 Para el framework de test en python, he encontrado a **Unittest** y a **Pytest**.
-Unittest es el marco de tests establecido en python de forma predeterminada. Para usarlo, creamos clases que se derivan del módulo unittest.TestCase.
-Pytest tiene ricas características incorporadas que requieren menos código en comparación con unittest. En el caso de unittest, tenemos que importar un módulo, crear una clase y luego definir funciones de prueba dentro de la clase. Pero en el caso de pytest, tenemos que definir las funciones y asserts dentro de ellas.
-Por simplicidad he decidido hacer uso de pytest ya que no hay ninguna estructura compleja en el proyecto que requiera hacer uso de una clase de test.
+Unittest es el framework de tests establecido en python de forma predeterminada, viene acompañado de una biblioteca de aserciones y un test runner. Para usarlo, creamos clases que se derivan del módulo unittest.TestCase.
+Pytest tiene ricas características incorporadas que requieren menos código en comparación con unittest. En el caso de unittest, tenemos que importar un módulo, crear una clase y luego definir funciones de prueba dentro de la clase. Pero en el caso de pytest (test-runner), tenemos que definir las funciones, y asserts dentro de ellas.
+Por simplicidad he decidido hacer uso de pytest ya que no hay ninguna estructura compleja que testear en el proyecto que requiera hacer uso de una clase de test.
 
 ## Justificación de uso de los principios F.I.R.S.T
 

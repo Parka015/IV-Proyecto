@@ -15,60 +15,38 @@ class Caracteristicas:
         caracteristicaValida(efectos_especiales)
         caracteristicaValida(valoracion)
 
-        self.accion = accion
-        self.terror = terror
-        self.romance = romance
-        self.comedia = comedia
-        self.efectos_especiales = efectos_especiales
-        self.valoracion = valoracion
+        self.atributos["accion"] = accion
+        self.atributos["terror"] = terror
+        self.atributos["romance"] = romance
+        self.atributos["comedia"] = comedia
+        self.atributos["efectos_especiales"] = efectos_especiales
+        self.atributos["valoracion"] = valoracion
         
         
     ####  Gets  ####
         
-    def getAccion(self):
-        return self.accion 
+    def getAtributos(self):
+        return self.atributos 
     
-    def getTerror(self):
-        return self.terror 
-    
-    def getRomance(self):
-        return self.romance
 
-    def getComedia(self):
-        return self.comedia
-    
-    def getEfectos_especiales(self):
-        return self.efectos_especiales
-    
-    def getValoracion(self):
-        return self.valoracion
-    
-    
     ####  Sets  ####
     
-    def setAccion(self, accion):
+    def setAtributos(self, accion,terror,romance,comedia,efectos_especiales, valoracion):
+        
         caracteristicaValida(accion)    #En caso de no ser válida genera un error
-        self.accion = accion
-    
-    def setTerror(self, terror):
         caracteristicaValida(terror)
-        self.terror = terror
-    
-    def setRomance(self, romance):
         caracteristicaValida(romance)
-        self.romance = romance
-
-    def setComedia(self, comedia):
         caracteristicaValida(comedia)
-        self.comedia = comedia
-    
-    def setEfectos_especiales(self, efectos_especiales):
         caracteristicaValida(efectos_especiales)
-        self.efectos_especiales = efectos_especiales
-    
-    def setValoracion(self, valoracion):
         caracteristicaValida(valoracion)
-        self.valoracion = valoracion
+
+        self.atributos["accion"] = accion
+        self.atributos["terror"] = terror
+        self.atributos["romance"] = romance
+        self.atributos["comedia"] = comedia
+        self.atributos["efectos_especiales"] = efectos_especiales
+        self.atributos["valoracion"] = valoracion
+
         
 
                  

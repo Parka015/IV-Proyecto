@@ -26,7 +26,7 @@ invoke check
 
 Para pasar los tests:
 ```
-invoke tests
+invoke test
 ```
 
 Para iniciar la aplicación (sin desarrollar aun):

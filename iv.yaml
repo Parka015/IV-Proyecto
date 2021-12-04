@@ -4,4 +4,4 @@ objeto_valor: source/caracteristicas.py
 automatizar:
     fichero: pyproject.toml
     orden: invoke
-test: tests/test_regLin.py
+test: tests/test_festimacion.py

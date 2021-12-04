@@ -8,7 +8,7 @@ from source.funciones import estimarValoracion, caracteristicaValida
 def test_regLinValorCorrecto():
 
     #Entrada de datos de test
-    list_test = leerCSV("test_data.txt")
+    list_test = leerCSV("tests/test_data.txt")
     list_test = convertStringToFloatList(list_test)[0]
     
     #Quito la valoración que ya tiene

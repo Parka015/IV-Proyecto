@@ -3,20 +3,19 @@
 Funciones Auxiliares
 """
 
-import numpy as np
 
 def caracteristicaValida(carac):
         
-        assert carac > 0 , "La caracteristica tiene que ser mayor o igual que 0"
-        assert carac < 5 , "La caracteristica tiene que ser menor o igual que 5"
+        assert carac >= 0 , "La caracteristica tiene que ser mayor o igual que 0"
+        assert carac <= 5 , "La caracteristica tiene que ser menor o igual que 5"
 
-def regLin(matriz):
-    matriz = np.array(matriz)
+def estimarValoracion(caracteristicas):
+    pesos = [0.4,0.11,0.07,0.16,0.26]
 
-    x = matriz[:,:len(matriz[0])-1]
+    valoracion = 0
 
-    y = matriz[:,len(matriz[0])-1:]
+    for valor, peso in zip(caracteristicas.values(), pesos):
 
-    pseudoinversa = np.linalg.pinv(x).dot(y)
+            valoracion += valor * peso
 
-    return pseudoinversa
+    return valoracion

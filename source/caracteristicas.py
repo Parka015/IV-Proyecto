@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 
-from funciones import caracteristicaValida
+from source.funciones import caracteristicaValida
 
 class Caracteristicas:
     
 
-    def __init__(self,accion,terror,romance,comedia,efectos_especiales, valoracion):
+    def __init__(self,accion,terror,romance,comedia,efectos_especiales):
         
         #Todas las características serán valores reales del [0.0 - 5.0]
         caracteristicaValida(accion)    #En caso de no ser válida genera un error
@@ -13,40 +13,47 @@ class Caracteristicas:
         caracteristicaValida(romance)
         caracteristicaValida(comedia)
         caracteristicaValida(efectos_especiales)
-        caracteristicaValida(valoracion)
-
+        
+        self.atributos={}
+        
         self.atributos["accion"] = accion
         self.atributos["terror"] = terror
         self.atributos["romance"] = romance
         self.atributos["comedia"] = comedia
         self.atributos["efectos_especiales"] = efectos_especiales
-        self.atributos["valoracion"] = valoracion
         
         
     ####  Gets  ####
         
-    def getAtributos(self):
+    def getCaracteristicas(self):
         return self.atributos 
     
 
     ####  Sets  ####
     
-    def setAtributos(self, accion,terror,romance,comedia,efectos_especiales, valoracion):
-        
+    def setAccion(self, accion,terror,romance,comedia,efectos_especiales, valoracion):
         caracteristicaValida(accion)    #En caso de no ser válida genera un error
-        caracteristicaValida(terror)
-        caracteristicaValida(romance)
-        caracteristicaValida(comedia)
-        caracteristicaValida(efectos_especiales)
-        caracteristicaValida(valoracion)
-
         self.atributos["accion"] = accion
+ 
+    def setTerror(self, terror):
+        caracteristicaValida(terror)
         self.atributos["terror"] = terror
+    
+    def setRomance(self, romance):
+        caracteristicaValida(romance)
         self.atributos["romance"] = romance
-        self.atributos["comedia"] = comedia
-        self.atributos["efectos_especiales"] = efectos_especiales
-        self.atributos["valoracion"] = valoracion
 
+    def setComedia(self, comedia):
+        caracteristicaValida(comedia)
+        self.atributos["comedia"] = comedia
+    
+    def setEfectos_especiales(self, efectos_especiales):
+        caracteristicaValida(efectos_especiales)
+        self.atributos["efectos_especiales"] = efectos_especiales
+    
+    def setValoracion(self, valoracion):
+        caracteristicaValida(valoracion)
+        self.atributos["valoracion"] = valoracion
         
 
                  

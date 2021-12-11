@@ -15,7 +15,7 @@ def check(c):
         
 @task
 def test(c):  
-    cmd = "pytest"
+    cmd = "python -m pytest"
     print("Pasando tests...\n\n")
     result = c.run(cmd, hide=False, warn=False)
     if result.ok:

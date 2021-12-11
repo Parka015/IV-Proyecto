@@ -38,3 +38,5 @@ class KNN:
         print("Estimacion: ", estimacion)
         return estimacion
 
+    def getData(self):
+        return self.data

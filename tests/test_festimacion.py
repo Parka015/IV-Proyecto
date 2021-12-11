@@ -2,7 +2,7 @@
 import pytest
 from source.caracteristicas import Caracteristicas
 from tests.funciones_tests import leerCSV, convertStringToFloatList
-from source.funciones import estimarValoracion, caracteristicaValida
+from source.funciones import caracteristicaValida
 from source.KNN import KNN
 
 #Comprueba que se cree correctamente un objeto tipo Caracteristicas

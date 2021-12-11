@@ -5,7 +5,8 @@ from source.funciones import caracteristicaValida
 class Caracteristicas:
     
 
-    def __init__(self,accion,terror,romance,comedia,efectos_especiales):
+    def __init__(self,accion : float,terror : float,romance : float,\
+                 comedia : float,efectos_especiales : float):
         
         #Todas las características serán valores reales del [0.0 - 5.0]
         caracteristicaValida(accion)   
@@ -21,7 +22,7 @@ class Caracteristicas:
         self.atributos["romance"] = romance
         self.atributos["comedia"] = comedia
         self.atributos["efectos_especiales"] = efectos_especiales
-        
+
         
     ####  Gets  ####
         

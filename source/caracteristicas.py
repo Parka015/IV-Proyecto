@@ -8,7 +8,7 @@ class Caracteristicas:
     def __init__(self,accion,terror,romance,comedia,efectos_especiales):
         
         #Todas las características serán valores reales del [0.0 - 5.0]
-        caracteristicaValida(accion)    #En caso de no ser válida genera un error
+        caracteristicaValida(accion)   
         caracteristicaValida(terror)
         caracteristicaValida(romance)
         caracteristicaValida(comedia)
@@ -32,7 +32,7 @@ class Caracteristicas:
     ####  Sets  ####
     
     def setAccion(self, accion,terror,romance,comedia,efectos_especiales, valoracion):
-        caracteristicaValida(accion)    #En caso de no ser válida genera un error
+        caracteristicaValida(accion)    
         self.atributos["accion"] = accion
  
     def setTerror(self, terror):

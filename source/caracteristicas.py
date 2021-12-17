@@ -4,73 +4,46 @@ from funciones import caracteristicaValida
 
 class Caracteristicas:
     
-
-    def __init__(self, genero, anio, duracion, pais, direccion, sinopsis):
+    def __init__(self,accion,terror,romance,comedia,efectos_especiales, valoracion):
+        #Todas las características serán valores reales del [0.0 - 5.0]
         
-        #Todos los generos serán valores reales del [0.0 - 5.0]
-        self.genero = caracteristicaValida(genero)
-        self.anio = anio
-        self.duracion = duracion
-        self.pais = pais
-        self.direccion = direccion
-        self.sinopsis = sinopsis
+        self.accion = caracteristicaValida(accion)
+        self.terror = caracteristicaValida(terror)
+        self.romance = caracteristicaValida(romance)
+        self.efectos_especiales = caracteristicaValida(efectos_especiales)
+        self.valoracion = caracteristicaValida(valoracion)
+        
         
     ####  Gets  ####
         
-    def getGenero(self):
-        gen = ""
-        
-        if self.genero == 1.0
-            gen = "Accion"
-           
-        if self.genero == 2.0
-            gen = "Terror"
-        
-        if self.genero == 3.0
-            gen = "Romance"
-           
-        if self.genero == 4.0
-            gen = "Efectos Especiales"
-            
-        if self.genero == 5.0
-            gen = "Suspense"
-           
-        return gen
-    
-    def getAnio(self):
-        return self.anio
-    
-    def getDuracion(self):
-        return self.duracion
-    
-    def getPais(self):
-        return self.pais
-    
-    def getDireccion(self):
-        return self.direccion
-    
-    def getSinopsis(self):
-        return self.sinopsis
-    
+    def getAccion(self):
+        return self.accion 
 
+    def getTerror(self):
+        return self.terror 
+
+    def getRomance(self):
+        return self.romance
+    
+     def getEfectos_especiales(self):
+        return self.efectos_especiales
+    
+     def getValoracion(self):
+        return self.valoracion    
     
     ####  Sets  ####
     
-    def setGenero(self, genero):
-        self.genero = caracteristicaValida(genero)
-    
-    def setAnio(self, anio):
-        self.anio = anio
+    def setAccion(self, accion):
+        self.accion = caracteristicaValida(accion)
         
-    def setDuracion(self, duracion):
-        self.duracion = duracion
-        
-    def setPais(self, pais):
-        self.pais = pais
-        
-    def setDireccion(self, direccion):
-        self.direccion = direccion
-        
-    def setSinopsis(self, sinopsis):
-        self.sinopsis = sinopsis
+    def setTerror(self, terror):
+        self.terror = caracteristicaValida(terror)
 
+    def setRomance(self, romance):
+        self.romance = caracteristicaValida(romance)
+        
+    def setEfectos_especiales(self, efectos_especiales):
+        self.efectos_especiales = caracteristicaValida(efectos_especiales)
+        
+    def setValoracion(self, valoracion):
+        self.valoracion = caracteristicaValida(valoracion)

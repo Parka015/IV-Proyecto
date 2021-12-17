@@ -8,7 +8,7 @@ Recoger las características de una serie y una valoración, de modo que, un usu
 
 ### :star: Objetivo 2 
 
-Por medio de estos datos recogidos, poder predecir mediante un algoritmo de Machine Learning si una serie, en función de sus características, tendrá buena valoración.
+Por medio de estos datos recogidos, poder predecir mediante algún algoritmo la valoración que obtendría una serie, en función de sus características.
 
 
 ### Documentación
@@ -24,9 +24,9 @@ Para pasar una comprobación de la sintaxis:
 invoke check
 ```
 
-Para pasar los tests (sin desarrollar aun):
+Para pasar los tests:
 ```
-invoke tests
+invoke test
 ```
 
 Para iniciar la aplicación (sin desarrollar aun):

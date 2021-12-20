@@ -49,3 +49,22 @@ Al final he elegido Pytest ya que es un test-runner bastante usado con bastante 
 ## Justificación de uso de los principios F.I.R.S.T
 
 He desarrollado 3 tests testear la lógica de negocio, que siguen los principios F.I.R.S.T, porque son **rápidos**, ya que usamos un conjunto de datos muy reducido, **independientes**, porque no dependen uno de otro, **repetible** porque se puede replicar en cualquier otro ordenador ya que todo lo que se necesita viene en el proyecto. Responde con una assert (o pasa o no pasa) y se ha creado de manera independiente a la implementación del KNN
+
+
+# Objetivo 5
+
+## Requisitos de búsqueda de Imagen Docker
+
+Buscamos una imagen que cumpla:
+
+* Debe ser compatible con las herramientas usadas en el proyecto (poetry, pytest e invoke).
+
+* Deberá contener una versión de python superior o igual a la 3.6.
+
+* A ser posible se preferiría un SO tipo open-source como Linux.
+
+* Como va a tener pocas herramientas, debería ser una imagen ligera.
+
+Requisitos opcionales: 
+
+* A ser posiible se preferiría una imagen official para tener ciertas garantías.

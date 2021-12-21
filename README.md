@@ -29,7 +29,7 @@ Para pasar los tests:
 invoke test
 ```
 
-Para pasar los tests desde el contenedor docker:
+Para pasar los tests desde el contenedor docker: 
 ```
 docker run -t -v `pwd`:/app/test parka015/serie-motion
 ```

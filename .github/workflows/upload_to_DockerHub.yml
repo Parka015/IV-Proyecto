@@ -52,7 +52,7 @@ jobs:
           tags: parka015/serie-motion:latest
           labels: ${{  steps.meta.output.labels  }}
           
-       - name: Sync readme
+      - name: Sync readme
         uses: ms-jpq/sync-dockerhub-readme@v1
         with:
           username: ${{  secrets.DOCKER_USERNAME  }}

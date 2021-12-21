@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "serieMotion"
+name = "source"
 version = "0.1.0"
 description = ""
 authors = ["pablo <PRM00@protonmail.com>"]

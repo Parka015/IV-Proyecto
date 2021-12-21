@@ -58,7 +58,7 @@ jobs:
           username: ${{  secrets.DOCKER_USERNAME  }}
           password: ${{  secrets.DOCKER_PASSWORD  }}
           repository: parka015/SerieMotion-IV
-          readme: "./README.md"
+          readme: "./README.md" 
 
 
 

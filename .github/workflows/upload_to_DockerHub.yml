@@ -1,9 +1,8 @@
-name: Publicar a Dockerhub
+name: Publicar a Dockerhub 
 on:
   push:
     branches:
       - 'main'
-      - 'Objetivo-5'
   pull_request:
     branches:
       - 'main'

@@ -61,7 +61,7 @@ Buscamos una imagen que cumpla:
 
 * Deberá contener una versión de python superior o igual a la 3.6.
 
-* A ser posible se preferiría un SO tipo open-source como Linux.
+* A ser posible se preferiría un SO tipo open-source.
 
 * Como va a tener pocas herramientas, debería ser una imagen ligera.
 
@@ -72,6 +72,8 @@ Requisitos opcionales:
  ## Imagen Docker : 
   
 Para elegir la imagen de Docker se han tenido en cuenta imagenes como Ubuntu, Python y Alpine que son imagenes oficiales.
+He escogido estas basicamente porque vienen con un SO open-source, alpine es conocida por ser ligera. Pero en primera instancia no sabia si python vendría en Ubuntu y Alpine (no hay información de ello en la pag oficial) ni si iba a haber alguna herramienta de las que necesitamos. Por ello he obtado por descargar las 3 imagenes y distintas versiones de estas para ver que contienen y comprobarlo por mi mismo.
+
 Vamos a ver las carácterísticas de cada una:
 
   * **Ubuntu** (info oficial imagen -> [aqui](https://hub.docker.com/_/ubuntu?tab=description&page=1)): El paquete de la versión 16.04 tiene un tamaño de 134.82 MB y además no tiene python instalado (básicamente porque lo he instalado y lo he probado). si nos movemos a una versión más actual (dentro de las que sean LTS).

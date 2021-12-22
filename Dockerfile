@@ -6,7 +6,6 @@ LABEL version="1.0.0"
 RUN groupadd -r dockertest &&\
     useradd -m --shell /bin/bash -r -g dockertest dockertest &&\      
     mkdir -p /app/test &&\
-    chown -R dockertest:dockertest /app/test
 
 
 #Seleccionamos el usuario que ejecuta el contenedor

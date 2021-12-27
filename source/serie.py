@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # Clase que almacena la información correspondiente a una serie
 
-Class Serie:
+class Serie:
   def __init__(self, iden, titulo, director, duracion, lanzamiento):
     self.identificador = iden   # Codigo para identificar de forma unica cada serie
     self.prediccion = None # Éxito estimado de una serie. Inicialmente nulo
@@ -45,7 +45,3 @@ Class Serie:
     
   def setLanzamiento(self, lanzamiento):
     self.lanzamiento = lanzamiento
-
-    
-    
-    

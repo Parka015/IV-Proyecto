@@ -2,7 +2,7 @@ name: Actualizar Readme en Dockerhub
 on:
   push:
     path:
-      - 'README-md'
+      - 'README.md'
       
 jobs:       
   actualizarReadme:

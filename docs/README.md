@@ -61,7 +61,7 @@ Buscamos una imagen que cumpla:
 
 * Deberá contener una versión de python superior o igual a la 3.6.
 
-* A ser posible se preferiría un SO tipo open-source como Linux.
+* A ser posible se preferiría un SO tipo open-source.
 
 * Como va a tener pocas herramientas, debería ser una imagen ligera.
 
@@ -71,25 +71,16 @@ Requisitos opcionales:
   
  ## Imagen Docker : 
   
-Para elegir la imagen de Docker se han tenido en cuenta imagenes como Ubuntu, Python y Alpine que son imagenes oficiales.
-Vamos a ver las carácterísticas de cada una:
-
-  * **Ubuntu** (info oficial imagen -> [aqui](https://hub.docker.com/_/ubuntu?tab=description&page=1)): El paquete de la versión 16.04 tiene un tamaño de 134.82 MB y además no tiene python instalado (básicamente porque lo he instalado y lo he probado). si nos movemos a una versión más actual (dentro de las que sean LTS).
-  En la 20.04 tenemos un tamaño de imagen de 72.78 MB que esta mejor en cuanto a que sea liviano, pero sigue tener python instalado.
-  En esta imagen no se tiene el lenguaje principal del proyecto y además se instalan un montón de herramientas propias de Ubuntu que realmente no vamos a utilizar, por dicho motivo descarto usar esta imagen.
+Como necesitamos python para el proycto vamos a explorar las opciones que nos ofrece esta imgen oficial.
   
-  * **Alpine** (info oficial imagen -> [aqui](https://hub.docker.com/_/alpine)): Es conocida por ser muy liviana pero habrá que probar que tenga una versión de python que sea suficiente y que no de problemas con las herramientas.
-  He empezado mirando la versión 3.15 que es la última versión, con un tamaño de 5.59 MB, pero tampoco dispone de python. Al final voy a optar por ir directamente a la imgen de python, y ver las distintas versiones que ofrece
-  
-  * **Python** (info oficial imagen -> [aqui](https://hub.docker.com/_/python)): Con esta imagen nos garantizamos que python esta instalado, pero ahora habrá que mirar cual de todas las versiones es más liviana, no da conflicto con las herramientas seleccionadas y usa un SO open-source. Esta imagen nos ofrece 4 posibles "variantes" **normal** , **slim** , **alpine** y **windowsservercore**. Para empezar descartaremos esta última por no ser open-source.
-  en cuanto a las demás tenemos que:
-    * **normal**: Es la versión por defecto que puede llegar a casi 1 GB de tamaño, esta claro que no vamos a usar esta variante por usar demasidas herramientas que no vamos a utilizar
-    * **slim**: Contiene los paquetes justos y necesarios para ejecutar python, la version de python 3.10 tiene un tamaño de 122 MB y usa Linux. Este puede ser un posible candidato.
+  * **Python** (info oficial imagen -> [aqui](https://hub.docker.com/_/python)): Con esta imagen nos garantizamos que python esta instalado, pero ahora habrá que mirar cual de todas las versiones es más liviana, no da conflicto con las herramientas seleccionadas y usa un SO open-source. Esta imagen nos ofrece 4 posibles "variantes" **normal** , **slim** , **alpine** y **windowsservercore**. Para empezar descartaremos esta última por no ser open-source. En cuanto a las demás tenemos que:
+    * **normal**: Es la versión por defecto que puede llegar a casi 1 GB de tamaño, esta claro que no vamos a usar esta variante por usar demasidas herramientas que no vamos a utilizar, además de ser muy pesada.
+    * **slim**: Contiene los paquetes justos y necesarios para ejecutar python, la version de python 3.10 tiene un tamaño de 122 MB (es liviana) y usa Linux. Este puede ser un posible candidato.
     * **alpine**: Va un paso más allá en simplicidad, hasta el punto de que la propia documentación avisa de que si se usan muchas dependencias, uno se espere problemas. En esta variante no incluye ni siquiera las herramienta bash.
   
-  Buscando por buenas prácticas nos encontramos con blogs que reafirman que puede ser mala ide usar alpine [vease aqui](https://pythonspeed.com/articles/base-image-python-docker-images/). Entonces buscando un equilibrio entre los requisitos de búsqueda y curarnos un poco en salud en caso de que la aplicación crezca, escogeré la versión slim.
+  Buscando por buenas prácticas nos encontramos con blogs que reafirman que puede ser mala idea usar alpine [vease aqui](https://pythonspeed.com/articles/base-image-python-docker-images/). Entonces buscando un equilibrio entre los requisitos de búsqueda y curarnos un poco en salud en caso de que la aplicación crezca, escogeré la versión slim, que sigue siendo liviana y open-source.
   
-  Se ha elegdo la version de python 3.10 porque es la última versión estable, pero también funciona con la 3.6 que es la mínima que piden herramientas como incoke y poetry
+  Se ha elegdo la version de python 3.10 porque es la última versión estable, pero también funciona con la 3.6 que es la mínima que piden herramientas como invoke y poetry
 
 
   ## Explicación de la imagen docker desarrollada

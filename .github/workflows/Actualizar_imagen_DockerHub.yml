@@ -1,39 +1,13 @@
 name: Publicar Imagen a Dockerhub
 on:
   push:
-    branches:
-      - 'main'
-      - 'Objetivo-6'
-  pull_request:
-    branches:
-      - 'main'
+    paths:
+      - 'Dockerfile'
+      - 'pyproject.toml'
       
-jobs:
-  changes:
-    runs-on: ubuntu-latest
-    outputs:
-      updateDocker: ${{ steps.set-output.outputs.has_changed }}
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-
-      - name: Comprobar qué archivos han cambiado
-        id: changed-files
-        uses: tj-actions/changed-files@v1.2.0
-        
-      - name: Dockerfile o requerimientos han cambiado
-        id: set-output
-        if: |
-          contains(steps.changed-files.outputs.modified_files, 'Dockerfile') ||
-          contains(steps.changed-files.outputs.modified_files, 'pyproject.toml')
-        run: echo '::set-output name=has_changed::true'
-        
+jobs:   
   actualizarImagen:
     runs-on: ubuntu-latest
-    needs: changes
-    if: needs.changes.outputs.updateDocker
     steps:
       - name: Checkout
         uses: actions/checkout@v2

@@ -5,9 +5,11 @@
 ## Gestor de dependencias y versiones : Poetry
 
 Poetry es una herramienta para la gestión de dependencias y el empaquetado en Python. Le permite declarar las bibliotecas de las que depende su proyecto y las administrará (instalará / actualizará) por usted. 
+
 La principal razón de usar poetry es que tiene una documentación muy buena y clara, pyproject.toml, el archivo principal, tiene una fácil configuración, y además sigue buenas practicas evitando usar requirements.txt, permite añadir las dependencias automáticamente con simplemente incluir el comando poetry add <dependencia>.
   
 Otras opciones barajadas son **pip**, pero el problema de este es que si el proyecto crece, no es buena opción para proyectos grandes. Por eso sería mejor opción **pipenv** que permite un flujo de trabajo más controlado y definido. Aunque entre esta última y **poetry**, me ha gustado más la documentación de **poetry** por su simplicidad y claridad
+Además podremos ajustarnos a las buenas prácticas de Python las cuales ya no hacen uso de requirements.txt sino de pyproject.toml.
 
 
 * Instalación:
@@ -49,7 +51,6 @@ Al final he elegido Pytest ya que es un test-runner bastante usado con bastante 
 ## Justificación de uso de los principios F.I.R.S.T
 
 He desarrollado 3 tests testear la lógica de negocio, que siguen los principios F.I.R.S.T, porque son **rápidos**, ya que usamos un conjunto de datos muy reducido, **independientes**, porque no dependen uno de otro, **repetible** porque se puede replicar en cualquier otro ordenador ya que todo lo que se necesita viene en el proyecto. Responde con una assert (o pasa o no pasa) y se ha creado de manera independiente a la implementación del KNN
-
 
 # Objetivo 5
 
@@ -126,6 +127,4 @@ Buscamos:
   
   * **CircleCI** : Lo usaremos para pasar los test a las 2 versiones de python que tendremos en cuenta para este proyecto.
   * **GHA** : Se han usado para construir los contenedores correspondientes de cada versión y subirlos a Dockerhub, para sincronizar el Readme de Github con el de Dockerhub y para pasar los tests a las 2 versiones de python que tendremos en cuenta para este proyecto.
-  
-
 

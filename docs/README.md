@@ -71,7 +71,7 @@ Requisitos opcionales:
   
  ## Imagen Docker : 
   
-Como necesitamos python para el proycto vamos a explorar las opciones que nos ofrece esta imgen oficial.
+Como necesitamos python para el proycto vamos a explorar las opciones que nos ofrece esta imagen oficial.
   
   * **Python** (info oficial imagen -> [aqui](https://hub.docker.com/_/python)): Con esta imagen nos garantizamos que python esta instalado, pero ahora habrá que mirar cual de todas las versiones es más liviana, no da conflicto con las herramientas seleccionadas y usa un SO open-source. Esta imagen nos ofrece 4 posibles "variantes" **normal** , **slim** , **alpine** y **windowsservercore**. Para empezar descartaremos esta última por no ser open-source. En cuanto a las demás tenemos que:
     * **normal**: Es la versión por defecto que puede llegar a casi 1 GB de tamaño, esta claro que no vamos a usar esta variante por usar demasidas herramientas que no vamos a utilizar, además de ser muy pesada.
@@ -86,4 +86,46 @@ Como necesitamos python para el proycto vamos a explorar las opciones que nos of
   ## Explicación de la imagen docker desarrollada
 
 Para la creación de la imagen se intentado seguir las mejores prácticas ([vease aqui](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/)), lo primero que hacemos es crear un usuario para ejecutar las ordenes con dicho usuario y no con el superusuario, posteriormente copiamos los archivos pyproject.toml y poetry.lock en la imagen, ya que será necesario para que, cuando instalemos poetry y vayamos a instalar las dependencias, este sepa que herramientas debe instalar (pytest o invoke por ejemplo). Finalmente, ejecutamos los test a través del task runner invoke.
+  
+  
+# Objetivo 6
+  
+## Versiones que se probarán de Python
+Testearemos para las versiones 3.6, ya que el la versión mínima de python que requieren las herramientas que usamos en el proyecto (invoke y poetry concretamente). Además probaremos la versión 3.10 ya que es la última versión estable actual de python.
+
+## Integración Continua
+  
+Para comprobar que el proyecto funciona con diferentes versiones de python se van a usar varios sistemas de integración continua (CI).
+  
+### Requisitos sistema de CI
+
+Buscamos:
+
+* Se preferirá que el sistema de CI proporcione servidores propios para ejecutar los procesos.
+
+* Que permita la ejecución en paralelo de estos procesos.
+
+* Que sea de fácil de integrar a GitHub.
+  
+* En caso de tener periodo de prueba gratuita, que sea lo suficiente extensa para poder terminar el proyecto
+  
+  
+### Búsqueda de sistemas de CI para pasar tests: **CircleCI** y **GHA**
+
+  Necesitamos escoger 2 sitemas distintos, para ello se han explorado diversos sistemas de integración continua. Concretamente **Travis**, **Actions** y **CircleCI** y **Semaphore**
+
+* **Semaphore**: Principalmente ha sido descartado por la duración del período de prueba (14 días) ya que no hay garantías de haber acabado para entonces.
+
+* **Travis**: Travis fue el principal sistema por el que se optó al principio ya que es el que se tenía pensado usar en la asignatura por sus características (además de que cumple con los requisitos propuestos). Sin embargo, presenta algunos problemas. Entre ellos, la necesidad de usar tarjeta de crédito para iniciar el sistema, además de que hace unos meses tuvieron problemas con una brecha de seguridad que expuso los "secrets" de miles de proyectos [véase aquí](https://arstechnica.com/information-technology/2021/09/travis-ci-flaw-exposed-secrets-for-thousands-of-open-source-projects/). Por dichos motivos queda descartado.
+
+* **CircleCI**: Cumple con todos los requisitos establecidos propuestos y presenta ciertas ventajas, como la similitud a los Actions de Github, que ya usamos en el objetivo anterior, la configuración es muy intuitiva, lo cual se agradece, aunque hay que habilitar el [checks API](https://circleci.com/docs/2.0/enable-checks/) para que se puedan ver los resultados de la integración continua en Github. Por dichos motivos usaremos esta sistema de CI para pasar los tests.
+  
+* **GitHub Actions**: También cumple con los requisitos propuestos, además de que ya se conoce este sistema debido al objetivo anterior, es muy simple de usar y obviamente es la opción que más simple tiene su "integración con GitHub" ya que no requiere ninguna configuración previa para poder ver el resultado de los workflows. Por dichos motivos se usará este sistema como segundo sistema de CI para pasar los test. 
+  
+ ### Usos de los distintos sistemas de CI: 
+  
+  * **CircleCI** : Lo usaremos para pasar los test a las 2 versiones de python que tendremos en cuenta para este proyecto.
+  * **GHA** : Se han usado para construir los contenedores correspondientes de cada versión y subirlos a Dockerhub, para sincronizar el Readme de Github con el de Dockerhub y para pasar los tests a las 2 versiones de python que tendremos en cuenta para este proyecto.
+  
+
 

@@ -17,7 +17,7 @@ WORKDIR /home/dockertest
 # Copiamos pyproject.toml y poetry.lock para instalar las despendencias más adelante
 COPY pyproject.toml poetry.lock ./
 
-#Actualizamos pip para que no salga warnings 
+#Actualizamos pip para que no salga warnings
 RUN python -m pip install --upgrade pip
 
 #Añadimos /home/dockertest/.local/bin al PATH

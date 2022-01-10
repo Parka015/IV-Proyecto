@@ -8,7 +8,7 @@ RUN groupadd -r dockertest &&\
     mkdir -p /app/test
 
 
-#Seleccionamos el usuario que ejecuta el contenedor
+#Seleccionamos el usuario que ejecuta el contenedor 
 USER dockertest
 
 #Especificamos el directorio de trabajo donde ejecutaremos la instalación de las herramientas

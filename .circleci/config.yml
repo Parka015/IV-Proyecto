@@ -20,5 +20,5 @@ workflows:
       - ejecutar-test:
           matrix:
             parameters:
-              python-version: ["3.8", "3.9", "3.10"]
+              python-version: ["3.6", "3.10"]
 

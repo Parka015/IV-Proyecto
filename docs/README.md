@@ -71,7 +71,7 @@ Requisitos opcionales:
   
  ## Imagen Docker : 
   
-Como necesitamos python para el proycto vamos a explorar las opciones que nos ofrece esta imgen oficial.
+Como necesitamos python para el proycto vamos a explorar las opciones que nos ofrece esta imagen oficial.
   
   * **Python** (info oficial imagen -> [aqui](https://hub.docker.com/_/python)): Con esta imagen nos garantizamos que python esta instalado, pero ahora habrá que mirar cual de todas las versiones es más liviana, no da conflicto con las herramientas seleccionadas y usa un SO open-source. Esta imagen nos ofrece 4 posibles "variantes" **normal** , **slim** , **alpine** y **windowsservercore**. Para empezar descartaremos esta última por no ser open-source. En cuanto a las demás tenemos que:
     * **normal**: Es la versión por defecto que puede llegar a casi 1 GB de tamaño, esta claro que no vamos a usar esta variante por usar demasidas herramientas que no vamos a utilizar, además de ser muy pesada.

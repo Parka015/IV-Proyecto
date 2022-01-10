@@ -3,7 +3,6 @@ FROM python:$VERSION-slim
 LABEL version="1.0.0" 
 
 #Creamos al usuario que ejecutará el contenedor y lo asociamos al grupo dockertest
-#Posteriormente concedemos permisos al usuario dockertest
 RUN groupadd -r dockertest &&\
     useradd -m --shell /bin/bash -r -g dockertest dockertest &&\      
     mkdir -p /app/test

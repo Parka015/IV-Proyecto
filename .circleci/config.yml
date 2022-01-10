@@ -4,6 +4,7 @@ jobs:
   ejecutar-test:
 
     parameters:
+
       python-version:
         type: string
 
@@ -25,3 +26,4 @@ workflows:
         matrix:
           parameters:
             python-version: ["3.6","3.10"]
+

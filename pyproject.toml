@@ -1,6 +1,6 @@
 [tool.poetry]
-name = "serieMotion"
-version = "0.1.0"
+name = "source"
+version = "1.0.0"
 description = ""
 authors = ["pablo <PRM00@protonmail.com>"]
 license = "GPL-3.0 License"

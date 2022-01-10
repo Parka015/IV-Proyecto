@@ -1,4 +1,5 @@
-FROM python:3.10-slim
+ARG VERSION=3.10
+FROM python:$VERSION-slim
 LABEL version="1.0.0" 
 
 #Creamos al usuario que ejecutará el contenedor y lo asociamos al grupo dockertest

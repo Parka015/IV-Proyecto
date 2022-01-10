@@ -1,29 +1,24 @@
 version: 2.1
 
+
 jobs:
   ejecutar-test:
-
     parameters:
-
       python-version:
         type: string
-
     docker:
-      - image: parka015/serie-motion:<< parameters.python-version >>
-
+      - image:  parka015/serie-motion:<< parameters.python-version >>
     steps:
       - checkout
-
       - run:
           name: Run tests
           command: invoke test
-
-
+      
 workflows:
-  integracion: 
+  integracion:
     jobs:
       - ejecutar-test:
-        matrix:
-          parameters:
-            python-version: ["3.6","3.10"]
+          matrix:
+            parameters:
+              python-version: ["3.8", "3.9", "3.10"]
 

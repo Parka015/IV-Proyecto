@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-      - Objetivo-6
 
   pull_request:
     branches:

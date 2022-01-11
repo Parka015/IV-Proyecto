@@ -5,13 +5,13 @@ jobs:
     parameters:
       python-version:
         type: string
-    docker:
-      - image:  parka015/serie-motion:<< parameters.python-version >>
+    machine:
+      image: ubuntu-2004:202010-01
     steps:
       - checkout
       - run:
           name: Run tests
-          command: invoke test
+          command: docker run -t -v `pwd`:/app/test parka015/serie-motion:<< parameters.python-version >>
       
 workflows:
   integracion:

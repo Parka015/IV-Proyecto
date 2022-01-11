@@ -80,7 +80,7 @@ Como necesitamos python para el proycto vamos a explorar las opciones que nos of
   
   Buscando por buenas prácticas nos encontramos con blogs que reafirman que puede ser mala idea usar alpine [vease aqui](https://pythonspeed.com/articles/base-image-python-docker-images/). Entonces buscando un equilibrio entre los requisitos de búsqueda y curarnos un poco en salud en caso de que la aplicación crezca, escogeré la versión slim, que sigue siendo liviana y open-source.
   
-  Se ha elegdo la version de python 3.10 porque es la última versión estable, pero también funciona con la 3.6 que es la mínima que piden herramientas como invoke y poetry
+  Se ha elegido la version de python 3.10 porque es la última versión estable, pero también funciona con la 3.6 que es la mínima que piden herramientas como invoke y poetry
 
 
   ## Explicación de la imagen docker desarrollada

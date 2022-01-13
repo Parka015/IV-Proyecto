@@ -3,11 +3,11 @@ name: Testear Versiones Python
 on:
   push:
     branches:
-      - main
+      - pruebas_main
 
   pull_request:
     branches:
-      - main
+      - pruebas_main
       
 
 jobs:

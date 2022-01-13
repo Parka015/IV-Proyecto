@@ -5,9 +5,7 @@ on:
     branches:
       - pruebas_main
 
-  pull_request:
-    branches:
-      - pruebas_main
+ 
       
 
 jobs:

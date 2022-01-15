@@ -39,6 +39,7 @@ docker run -t -v `pwd`:/app/test parka015/serie-motion
 Para iniciar la aplicación (sin desarrollar aun):
 ```
 invoke run
+
 ```
 
 

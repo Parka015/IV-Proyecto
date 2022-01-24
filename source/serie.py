@@ -1,10 +1,12 @@
 # -*- coding: utf-8 -*-
 # Clase que almacena la información correspondiente a una serie
 
+from source.caracteristicas import Caracteristicas
+
 class Serie:
   def __init__(self, iden, titulo, director, duracion, lanzamiento):
-    self.identificador = iden   # Codigo para identificar de forma unica cada serie
-    self.prediccion = None # Éxito estimado de una serie. Inicialmente nulo
+    self.identificador = iden                             # Codigo para identificar de forma unica cada serie
+    self.caracteristicas = Caracteristicas(0, 0, 0, 0, 0) # Caracteristicas de una serie, inicialmente los atributos son 0
     self.titulo = titulo
     self.director = director
     self.duracion = duracion
@@ -12,9 +14,6 @@ class Serie:
     
   def getId(self):
     return self.identificador
-  
-  def getPrediccion(self):
-    return self.prediccion
   
   def getTitulo(self):
     return self.titulo
@@ -30,9 +29,6 @@ class Serie:
 
   def setId(self, id):
     self.identificador = id
-    
-  def setPrediccion(self, prediccion):
-    self.prediccion = prediccion
     
   def setTitulo(self, titulo):
     self.titulo = titulo

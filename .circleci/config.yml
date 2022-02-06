@@ -1,0 +1,23 @@
+version: 2.1
+
+jobs:
+  ejecutar-test:
+    parameters:
+      python-version:
+        type: string
+    machine:
+      image: ubuntu-2004:202010-01
+    steps:
+      - checkout
+      - run:
+          name: Run tests
+          command: docker run -t -v `pwd`:/app/test parka015/serie-motion:<< parameters.python-version >>
+      
+workflows:
+  integracion:
+    jobs:
+      - ejecutar-test:
+          matrix:
+            parameters:
+              python-version: ["3.6", "3.10"]
+

@@ -14,8 +14,8 @@ jobs:
         #https://github.com/marketplace/actions/docker-hub-readme-description-sync
         uses: meeDamian/sync-readme@v1.0.6
         with:
-          user: ${{ secrets.DOCKER_USERNAME }}
-          pass: ${{ secrets.DOCKER_PASS }}
+          user: ${{ secrets.DOCKER_HUB_USERNAME }}
+          pass: ${{ secrets.DOCKER_HUB_PASSWORD }}
           readme: "./README.md"
 
 

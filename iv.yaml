@@ -5,3 +5,4 @@ automatizar:
     fichero: pyproject.toml
     orden: invoke
 test: tests/test_festimacion.py
+CI: .circleci/config.yml

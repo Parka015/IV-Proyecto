@@ -87,4 +87,51 @@ Como necesitamos python para el proycto vamos a explorar las opciones que nos of
   ## Explicación de la imagen docker desarrollada
 
 Para la creación de la imagen se intentado seguir las mejores prácticas ([vease aqui](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/)), lo primero que hacemos es crear un usuario para ejecutar las ordenes con dicho usuario y no con el superusuario, posteriormente copiamos los archivos pyproject.toml y poetry.lock en la imagen, ya que será necesario para que, cuando instalemos poetry y vayamos a instalar las dependencias, este sepa que herramientas debe instalar (pytest o invoke por ejemplo). Finalmente, ejecutamos los test a través del task runner invoke.
+  
+  
+# Objetivo 6
+  
+## Versiones que se probarán de Python
+Testearemos para las versiones 3.6, ya que el la versión mínima de python que requieren las herramientas que usamos en el proyecto (invoke y poetry concretamente). Además probaremos la versión 3.10 ya que es la última versión estable actual de python.
+No he incluido las versiones de en medio para no fundir los créditos de CircleCI en caso de necesitar varias pruebas.
+
+## Integración Continua
+  
+Para comprobar que el proyecto funciona con diferentes versiones de python se van a usar varios sistemas de integración continua (CI).
+  
+### Requisitos sistema de CI
+
+Buscamos:
+
+* Se preferirá que el sistema de CI proporcione servidores propios para ejecutar los procesos.
+
+* Que permita la ejecución en paralelo de estos procesos.
+
+* Que sea de fácil de integrar a GitHub.
+  
+* En caso de tener periodo de prueba gratuito, que sea lo suficiente extenso como para poder terminar el proyecto
+  
+  
+### Búsqueda de sistemas de CI para pasar tests: **CircleCI** y **GHA**
+
+  Necesitamos escoger 2 sitemas distintos, para ello se han explorado diversos sistemas de integración continua. Concretamente **Travis**, **Actions**, **CircleCI** y **Semaphore**
+
+* **Semaphore**: Aunque cumple casi todos los requisitos principalmente ha sido descartado por la duración del período de prueba (14 días) ya que no hay garantías de haber acabado para entonces, y es motivo más que suficiente para descartarlo.
+
+* **Travis**: Travis fue el principal sistema por el que se optó al principio , ya que cumple con todos los requisitos propuestos y además es el que se tenía pensado usar en la asignatura. Sin embargo, presenta algunos problemas. Entre ellos, la necesidad de usar tarjeta de crédito para iniciar el sistema, además de que hace unos meses tuvieron problemas con una brecha de seguridad que expuso los "secrets" de miles de proyectos [véase aquí](https://arstechnica.com/information-technology/2021/09/travis-ci-flaw-exposed-secrets-for-thousands-of-open-source-projects/). Por dichos motivos queda descartado, ya que tarjeta de crédito y vulnerabilidades no es que inspire mucha confianza.
+
+* **CircleCI**: Cumple con todos los requisitos establecidos propuestos, creditos más que suficientes, paralelismo de los procesos, facil de integrar en Github... y además presenta ciertas ventajas, como la similitud a los Actions de Github, que ya usamos en el objetivo anterior.
+La configuración es muy intuitiva, lo cual se agradece, requiere que se habilite el [checks API](https://circleci.com/docs/2.0/enable-checks/) para que se puedan ver los resultados de la integración continua en Github, la unica pega que le encuentro ha sido el setup, que ha sido laborioso de realizar. En cualquier caso a pesar de ese defecto, lo escojo por los motivos anteriormente mencionados y lo usaremos para pasar los tests del proyecto.
+  
+* **GitHub Actions**: También cumple con los requisitos propuestos, además de que ya se conoce este sistema debido al objetivo anterior, es muy simple de usar y obviamente es la opción que tiene la "integración con GitHub" mas simple, ya que no requiere ninguna configuración previa para poder ver el resultado de los workflows. Por dichos motivos se usará este sistema como segundo sistema de CI para pasar los test. 
+  
+ ### Usos de los distintos sistemas de CI: 
+  
+  * **CircleCI** : Lo usaremos para pasar los test a las 2 versiones de python que tendremos en cuenta para este proyecto.
+
+  * **GHA** : Se han usado para construir los contenedores correspondientes de cada versión y subirlos a Dockerhub, para sincronizar el Readme de Github con el de Dockerhub (ambos del objetivo anterior) y para pasar los tests a las 2 versiones de python que tendremos en cuenta para este proyecto.
+
+  **Nota: Se ha realizado el testeo de las 2 versiones de python con los 2 sistemas, porque no tenía claro si era necesario eso o simplemente usar 2 sistemas de CI distintos en todo el proyecto. En cualquier caso esta ópcion no afecta negativamente, ya que en caso de fallar CircleCI como hace unas semanas, seguimos pudiendo testear el proyecto para las distintas versiones de python con GHA**
+  
+
 

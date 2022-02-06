@@ -1,0 +1,24 @@
+name: Actualizar Readme en Dockerhub
+on:
+  push:
+    path:
+      - 'README.md'
+      
+jobs:       
+  actualizarReadme:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@main
+      - name: Sincronizar readme Github con Dockerhub
+        #https://github.com/marketplace/actions/docker-hub-readme-description-sync
+        uses: meeDamian/sync-readme@v1.0.6
+        with:
+          user: ${{ secrets.DOCKER_USERNAME }}
+          pass: ${{ secrets.DOCKER_PASS }}
+          readme: "./README.md"
+
+
+
+
+

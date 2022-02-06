@@ -51,3 +51,40 @@ Al final he elegido Pytest ya que es un test-runner bastante usado con bastante 
 ## Justificación de uso de los principios F.I.R.S.T
 
 He desarrollado 3 tests testear la lógica de negocio, que siguen los principios F.I.R.S.T, porque son **rápidos**, ya que usamos un conjunto de datos muy reducido, **independientes**, porque no dependen uno de otro, **repetible** porque se puede replicar en cualquier otro ordenador ya que todo lo que se necesita viene en el proyecto. Responde con una assert (o pasa o no pasa) y se ha creado de manera independiente a la implementación del KNN
+
+# Objetivo 5
+
+## Requisitos de búsqueda de Imagen Docker
+
+Buscamos una imagen que cumpla:
+
+* Debe ser compatible con las herramientas usadas en el proyecto (poetry, pytest e invoke).
+
+* Deberá contener una versión de python superior o igual a la 3.6.
+
+* A ser posible se preferiría un SO tipo open-source.
+
+* Como va a tener pocas herramientas, debería ser una imagen ligera.
+
+Requisitos opcionales: 
+
+* A ser posible se preferiría una imagen oficial para tener ciertas garantías.
+  
+ ## Imagen Docker : 
+  
+Como necesitamos python para el proycto vamos a explorar las opciones que nos ofrece esta imagen oficial.
+  
+  * **Python** (info oficial imagen -> [aqui](https://hub.docker.com/_/python)): Con esta imagen nos garantizamos que python esta instalado, pero ahora habrá que mirar cual de todas las versiones es más liviana, no da conflicto con las herramientas seleccionadas y usa un SO open-source. Esta imagen nos ofrece 4 posibles "variantes" **normal** , **slim** , **alpine** y **windowsservercore**. Para empezar descartaremos esta última por no ser open-source. En cuanto a las demás tenemos que:
+    * **normal**: Es la versión por defecto que puede llegar a casi 1 GB de tamaño, esta claro que no vamos a usar esta variante por usar demasidas herramientas que no vamos a utilizar, además de ser muy pesada.
+    * **slim**: Contiene los paquetes justos y necesarios para ejecutar python, la version de python 3.10 tiene un tamaño de 122 MB (es liviana) y usa Linux. Este puede ser un posible candidato.
+    * **alpine**: Va un paso más allá en simplicidad, hasta el punto de que la propia documentación avisa de que si se usan muchas dependencias, uno se espere problemas. En esta variante no incluye ni siquiera las herramienta bash.
+  
+  Buscando por buenas prácticas nos encontramos con blogs que reafirman que puede ser mala idea usar alpine [vease aqui](https://pythonspeed.com/articles/base-image-python-docker-images/). Entonces buscando un equilibrio entre los requisitos de búsqueda y curarnos un poco en salud en caso de que la aplicación crezca, escogeré la versión slim, que sigue siendo liviana y open-source.
+  
+  Se ha elegido la version de python 3.10 porque es la última versión estable, pero también funciona con la 3.6 que es la mínima que piden herramientas como invoke y poetry
+
+
+  ## Explicación de la imagen docker desarrollada
+
+Para la creación de la imagen se intentado seguir las mejores prácticas ([vease aqui](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/)), lo primero que hacemos es crear un usuario para ejecutar las ordenes con dicho usuario y no con el superusuario, posteriormente copiamos los archivos pyproject.toml y poetry.lock en la imagen, ya que será necesario para que, cuando instalemos poetry y vayamos a instalar las dependencias, este sepa que herramientas debe instalar (pytest o invoke por ejemplo). Finalmente, ejecutamos los test a través del task runner invoke.
+

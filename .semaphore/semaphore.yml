@@ -8,7 +8,7 @@ blocks:
   - name: Test
     task:
       jobs:
-        - name: pytest
+        - name: Pasar los tests
           matrix:
             - env_var: PYTHON_VERSION
               values:

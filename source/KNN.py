@@ -14,6 +14,7 @@ class KNN:
         self.data = labeled_data
 
 
+
     def predict(self, carac : Caracteristicas, k : int):
 
         #Se debe previamente haber entrenado el algoritmo

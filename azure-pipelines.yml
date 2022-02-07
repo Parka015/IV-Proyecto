@@ -4,8 +4,8 @@ trigger:
     - '*'
   paths:
     include:
-    - my_hairdressing_app
-    - testing
+    - source
+    - tests
 
 pr:
   branches:

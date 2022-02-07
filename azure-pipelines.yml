@@ -1,0 +1,48 @@
+trigger:
+  branches:
+    include:
+    - '*'
+  paths:
+    include:
+    - my_hairdressing_app
+    - testing
+
+pr:
+  branches:
+    include:
+    - '*'
+  paths:
+    include:
+    - source
+    - tests
+
+pool:
+  vmImage: ubuntu-latest
+strategy:
+  matrix:
+    Python37:
+      python.version: '3.7'
+    Python38:
+      python.version: '3.8'
+    Python39:
+      python.version: '3.9'
+
+steps:
+- task: UsePythonVersion@0
+  inputs:
+    versionSpec: '$(python.version)'
+  displayName: 'Use Python $(python.version)'
+
+- script: |
+    python -m pip install --upgrade pip
+    pip install poetry
+  displayName: 'Instalar gestor de dependencias'
+
+- script: |
+    poetry config virtualenvs.create false
+    poetry install
+  displayName: 'Instalar dependencias'
+
+- script: |
+    invoke test
+  displayName: 'Lanzar tests'

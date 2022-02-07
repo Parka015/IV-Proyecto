@@ -3,7 +3,6 @@
 Funciones Auxiliares
 """
 
-
 def caracteristicaValida(carac):
         
         assert carac >= 0 , "La caracteristica tiene que ser mayor o igual que 0"

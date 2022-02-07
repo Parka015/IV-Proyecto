@@ -88,3 +88,33 @@ Como necesitamos python para el proycto vamos a explorar las opciones que nos of
 
 Para la creación de la imagen se intentado seguir las mejores prácticas ([vease aqui](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/)), lo primero que hacemos es crear un usuario para ejecutar las ordenes con dicho usuario y no con el superusuario, posteriormente copiamos los archivos pyproject.toml y poetry.lock en la imagen, ya que será necesario para que, cuando instalemos poetry y vayamos a instalar las dependencias, este sepa que herramientas debe instalar (pytest o invoke por ejemplo). Finalmente, ejecutamos los test a través del task runner invoke.
 
+
+
+# Objetivo 6
+  
+## Versiones que se probarán de Python
+*Por decidir, aunque la  minima será la 3.6 (porque es la versión minima que requieren las herramientas de la aplicación (invoke y poetry concretamente) ) y la máxima la 3.10 (por ser la la última versión estable actual de python)*
+
+## Integración Continua
+  
+Para comprobar que el proyecto funciona con diferentes versiones de python se van a usar 2 sistemas de integración continua (CI).
+  
+### Requisitos sistema de CI
+Son aquellos criterios que se usarán para seleccionar a los principales sistemas candidatos para el proyecto.
+Aquellos que no los cumplan no serán considerados como opción para el proyecto.
+
+Requisitos principales:
+
+* Se preferirá que el sistema de CI proporcione servidores propios para ejecutar los procesos.
+
+* Que permita la ejecución en paralelo de estos procesos.
+
+* Que sea de fácil de integrar a GitHub.
+
+* Que sea gratuito.
+
+Requisitos valorables:
+  
+* Que el periodo de prueba gratuito sea lo suficiente extenso como para poder terminar el proyecto
+
+### Sistemas de CI encontrados ###

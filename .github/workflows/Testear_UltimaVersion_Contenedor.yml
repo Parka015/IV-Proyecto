@@ -1,0 +1,26 @@
+name: Testear última versión Python con contenedor Docker
+
+on:
+  push:
+    path:
+      - source
+      - tests
+      - Dockerfile      
+
+jobs:
+  test_python:
+    strategy:
+      matrix:
+        python_version: ["3.6","3.10"]
+
+    name: Test docker image with python ${{ matrix.python_version }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Install Docker
+        uses: docker/setup-buildx-action@v1
+
+      - name: Lanzar Tests
+        run: docker run -t -v `pwd`:/app/test parka015/serie-motion:${{ matrix.python_version }}

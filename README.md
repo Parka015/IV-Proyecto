@@ -1,5 +1,7 @@
 ## IV-Proyecto
 
+[![Build Status](https://parka015.semaphoreci.com/badges/serie-motion/branches/master.svg?style=shields)](https://parka015.semaphoreci.com/projects/serie-motion)
+
 Quiero crear una aplicación que resuelva el problema que puedan tener ciertas compañias productoras de series a la hora de saber si le será rentable la producción de una determinada serie en base a las características de la misma y además permitir a cualquier otro usuario, el poder buscar una serie en función del género y de su valoración. La aplicación tendrá 2 objetivos:
 
 ### :star: Objetivo 1 

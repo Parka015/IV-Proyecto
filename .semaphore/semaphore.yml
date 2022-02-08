@@ -1,0 +1,25 @@
+version: v1.0
+name: Python
+agent:
+  machine:
+    type: e1-standard-2
+    os_image: ubuntu1804
+blocks:
+  - name: Test
+    task:
+      jobs:
+        - name: Pasar los tests
+          matrix:
+            - env_var: PYTHON_VERSION
+              values:
+                - '3.7'
+                - '3.8'
+                - '3.9'
+          commands:
+            - sem-version python $PYTHON_VERSION
+            - checkout
+            - python -m pip install --upgrade pip
+            - pip install poetry
+            - poetry config virtualenvs.create false
+            - poetry install
+            - invoke test

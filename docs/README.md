@@ -88,3 +88,71 @@ Como necesitamos python para el proycto vamos a explorar las opciones que nos of
 
 Para la creación de la imagen se intentado seguir las mejores prácticas ([vease aqui](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/)), lo primero que hacemos es crear un usuario para ejecutar las ordenes con dicho usuario y no con el superusuario, posteriormente copiamos los archivos pyproject.toml y poetry.lock en la imagen, ya que será necesario para que, cuando instalemos poetry y vayamos a instalar las dependencias, este sepa que herramientas debe instalar (pytest o invoke por ejemplo). Finalmente, ejecutamos los test a través del task runner invoke.
 
+
+
+# Objetivo 6
+  
+## Versiones que se probarán de Python
+Se probarán las versiones desde la 3.6 (porque es la versión minima que requieren las herramientas de la aplicación (invoke y poetry concretamente) ) a la 3.10 (por ser la la última versión estable actual de python)
+
+
+## Integración Continua
+  
+Para comprobar que el proyecto funciona con diferentes versiones de python se van a usar 2 sistemas de integración continua (CI).
+  
+### Requisitos sistema de CI
+Son aquellos criterios que se usarán para seleccionar a los principales sistemas candidatos para el proyecto.
+Aquellos que no los cumplan no serán considerados como opción para el proyecto.
+
+Requisitos principales:
+
+* Se preferirá que el sistema de CI proporcione servidores propios para ejecutar los procesos.
+
+* Que permita la ejecución en paralelo de estos procesos.
+
+* Que sea de fácil de integrar a GitHub.
+
+* Que sea gratuito.
+
+Requisitos valorables:
+  
+* Que el periodo de prueba gratuito sea lo suficiente extenso como para poder terminar el proyecto
+
+### Sistemas de CI encontrados ###
+
+Necesitamos escoger 2 sitemas distintos, para ello se han explorado diversos sistemas de integración continua que cumplan con los requisitos de búsqueda. Concretamente **Travis**, **GitHub Actions**, **CircleCI**, **Azure Pipelines** y **Semaphore**.
+  Hay que añadir que aquellos que se han probado son similares en cuanto a dificultad para integrar en Github, a excepción e las GHA que obviamente ha sido la más sencilla de realizar. Además todos son gratuitos y permiten paralelismo y hosting aunque de eso habrá ciertas diferencias que se tratarán más abajo específicamente.
+
+* **Azure**: Desarrollado por Microsoft ofrece unas características muy tentadoras para proyectos open sourcce, y es que permite minutos ilimitados con hasata 10 parallel jobs gratuitos. Tambien tiene ofertas gratuitas para proyectos privados pero no tan tentadoras (1 parallel job gratuito y 1.800 minutos por mes).
+O al menos eso era hasta que por el abuso del servicio, se redujo a 0 el nº de parallel jobs para repositorios públicos y privados, mas información pulsando [aquí](https://stackoverflow.com/questions/68033977/errorno-hosted-parallelism-has-been-purchased-or-granted). Ahora para solicitar que se reactive para nuestro proyecto hay que ponerse en contacto con ellos y es un proceso que lleva tiempo. Otra opción es ejecutarlo en local, pero no es lo que buscamos para el proyecto. Su configuración no ha sido muy laboriosa, ni ha hecho falca crearse una cuenta (ya que se usa la propia cuenta de Google).
+**Nota: Este CI he llegado a probarlo (ejecutándo los pipelines en local).** 
+
+* **Travis**: Travis fue el principal sistema por el que se optó al principio , ya que cumple con todos los requisitos propuestos y además es el que se tenía pensado usar en la asignatura. Sin embargo, presenta algunos problemas. Entre ellos, la necesidad de usar tarjeta de crédito para iniciar el sistema, además de que hace unos meses tuvieron problemas con una brecha de seguridad que expuso los "secrets" de miles de proyectos [véase aquí](https://arstechnica.com/information-technology/2021/09/travis-ci-flaw-exposed-secrets-for-thousands-of-open-source-projects/). Por dichos motivos es la opción menos tentadora, ya que tarjeta de crédito y vulnerabilidades no es que inspire mucha confianza.
+  Dispone de 10.000 creditos en su versión gratuita (que aparentemente son 1.000 minutos si se usa una MV con Linux )
+**Nota: Este CI NO he podido llegar a probarlo.** 
+
+* **CircleCI**: Presenta ciertas ventajas, como la similitud a los Actions de Github, que ya usamos en el objetivo anterior, proporciona creditos más que suficientes y una configuración muy intuitiva, lo cual se agradece. Requiere que se habilite el [checks API](https://circleci.com/docs/2.0/enable-checks/) para que se puedan ver los resultados de la integración continua en Github. La única pega que le encuentro ha sido el setup, que ha sido laborioso de realizar.
+Proporciona 30.000 creditos (6,000 minutos aparentemente) y hasta 30 trabajos en paralelo lo cual es lo mejor en comparación a las otras opciones
+**Nota: Este CI he llegado a probarlo.** 
+
+* **Semaphore**: Afirma ser más veloz que algunos de los principales sistemas de CI, haciendo una comparación sobre una web app con **GHA**, **CircleCI** y **Travis CI**. También se hace una comparación con las GHA en el siguiente [enlace](https://knapsackpro.com/ci_comparisons/semaphore-ci/vs/github-actions). 
+No ha sido muy complicado de configurar aunque los templates que proporciona contienen algún que otro error (tal vez es porque estan desactualizados), pero se ha podido paliar gracias a que tiene una documentación bastante clara en comparación a Azure por ejemplo.
+La única pega es la duración del período de prueba (14 días), pasado este tiempo quedaria limitado a 1 job a la vez (se pierde el paralelismo) y 1.300 minutos por lo que no es una buena idea a largo plazo.
+**Nota: Este CI he llegado a probarlo.** 
+
+* **GitHub Actions**: También cumple con los requisitos propuestos, además de que ya se conoce este sistema debido al objetivo anterior, es muy simple de usar y obviamente es la opción que tiene la "integración con GitHub" mas simple, ya que no requiere ninguna configuración previa para poder ver el resultado de los workflows.
+ No hay limite en el número de minutos para proyectos open source como este.
+**Nota: Este CI he llegado a probarlo.**  
+
+
+ ### Sistemas CI escogidos y su uso: 
+
+ Lo primero aclarar todo el trabajo realizado, ya había usado CircleCI y las GHA en la entrega anterior, pero como se ha pedido el uso de un CI distinto de estos he tenido que ampliar la búsqueda ya que no me convencía Semaphore por el breve periodo de prueba ni Travis, por no querer dejar la tarjeta bancaría. Entonces encontré AzureCI que cumplía con los requisitos de búsqueda y aparentemente iba a disponer de minutos ilimitados. Una vez que todo estuvo puesto a punto obtuve un error de Azure avisando de que no disponía de parallel jobs, que es el problema que ya he comentado arriba. Probándolo en local, funcionaba pero ahora se abría un dilema, CircleCI y GHA funcionan pero no puedo usarlas conjuntamente, Travis pide tarjeta, Azure solo se ejecuta en local (mientras que no se solicite el que se nos activen los parallel jobs) y Semaphore tiene solo 14 dias de prueba. 
+ Dicho esto, creo que configurar 4 sistemas de CI es prueba suficiente de que se han probado diversas opciones, además de que 3 de ellos (CircleCI, GHA y Semaphore) están operativos para llevar a cabo las tareas con los requisitos de búsqueda que se piden (no incluyo a Azure porque había que ponerse en contacto con ellos para que nos permitan ejecutar en sus servidores y no en local) por lo que no creo que sea necesario seguir buscando.
+ Pero hay que tomar una decisión sobre que hacer. Personalmente preferiría seguir con CircleCI pero debido a la condición para pasar el objetivo no me queda otra que usar Semaphore, a pesar de que no es una opción a largo plazo, pero Travis no es mejor opción para mi y para activar lo de Azure lleva un tiempo que no dispongo.
+ Por lo que, aunque ahora se escoja Semaphore, en un futuro se tendría que elegir entre Azure Pipeline y CircleCI. Azure tiene además más servicios que son muy fáciles de integrar una vez ya asociada la cuenta de Google con GitHub (como boards para sprints y algunas cosas más), por lo que puede ser una opción interesante y habría que valorar si se prefieren estas características por encima de la superioridad en paralelismo que nos ofrece CircleCI. 
+ ¿Y por qué usar GHA por encima de CircleCI?, básicamente porque el poder trabajar sin preocuparse del número de minutos es lo mejor para poder trabajar tranquilo, además de que hay muchos Actions ya creadas que nos pueden facilitar el trabajo que podamos llegar necesitar (como fue el caso de actualizar el readme y publicar imagenes en DockerHub).
+  
+  * **Semaphore** : Lo usaremos para testear las versiones de python intermedias entre la 3.6 y 3.10 resolviendo así el issue [#30](https://github.com/Parka015/serie-motion/issues/30).
+
+  * **GHA** : Se han usado para probar las 2 versiones de python (mínima y máxima) con el contenedor docker del objetivo anterior resolviendo así el issue [#31](https://github.com/Parka015/serie-motion/issues/31).
